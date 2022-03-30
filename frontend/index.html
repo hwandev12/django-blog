@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" />
+<style>
+  .card {
+    cursor: pointer;
+    transition: 500ms ease;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  .card:hover {
+    transform: scale(1.1);
+    transition: 500ms ease;
+  }
+</style>
+
+<div class="col-md-10 ml-5 container">
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-xl-3 col-lg-6">
+      <div class="card l-bg-cherry">
+        <div class="card-statistic-3 p-4">
+          <div class="card-icon card-icon-large">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="mb-4 d-flex align-items-center justify-content-between">
+            <h5 class="card-title mb-0">{{ post.name }}</h5>
+            <img src="{{ post.img.url }}" alt="wrong message" width="50" />
+          </div>
+          <div class="row align-items-center mb-2 d-flex">
+            <div class="col-8">
+              <h2 class="d-flex align-items-center mb-0">{{ post.cost }}$</h2>
+            </div>
+            <div class="col-4 text-right">
+              <span>{{ post.percent }}% <i class="fa fa-arrow-up"></i></span>
+            </div>
+          </div>
+          <div class="progress mt-1" data-height="8" style="height: 8px">
+            <div
+              class="progress-bar l-bg-cyan"
+              role="progressbar"
+              data-width="25%"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 25%"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
